@@ -4,12 +4,12 @@ require File.expand_path('../lib/core/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Xavier Via"]
   gem.email         = ["xavierviacanel@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Core functionality of Fetcher}
+  gem.summary       = %q{Core functionality of Fetcher}
   gem.homepage      = ""
 
   gem.add_dependency 'virtus'
-  
+
   gem.add_development_dependency 'rspec'
 
   gem.files         = `git ls-files`.split($\)
