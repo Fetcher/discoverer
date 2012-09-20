@@ -12,4 +12,27 @@ describe Core::Model do
     end
     flag.should === true
   end
+
+  describe '#attributes!' do 
+    context 'we have another attribute' do
+      before do
+        module Core
+          class Model
+            attribute :my_attr
+          end
+        end
+      end
+
+      context 'no attribute is set' do
+        it 'should return and empty hash' do 
+          model = Core::Model.new {}
+          model.attributes!.should == {}
+        end
+      end
+
+      context 'only one attribute is set' 
+
+      context 'both attributes are set'
+    end
+  end
 end
