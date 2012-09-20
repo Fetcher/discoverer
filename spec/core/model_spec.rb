@@ -24,15 +24,34 @@ describe Core::Model do
       end
 
       context 'no attribute is set' do
-        it 'should return and empty hash' do 
+        it 'should return an empty hash' do 
           model = Core::Model.new {}
           model.attributes!.should == {}
         end
       end
 
-      context 'only one attribute is set' 
+      context 'only one attribute is set' do
+        context 'my_attr was set' do
+          it 'should return the attribute that was set' do 
+            model = Core::Model.new :my_attr => "value"
+            model.attributes!.should == { :my_attr => "value" }
+          end
+        end
 
-      context 'both attributes are set'
+        context '_id was set' do
+          it 'should return the attribute that was set' do 
+            model = Core::Model.new :_id => "value"
+            model.attributes!.should == { :_id => "value" }
+          end
+        end
+      end
+
+      context 'both attributes are set' do
+        it 'should return both attributes' do
+          model = Core::Model.new :my_attr => 'value', :_id => "123456"
+          model.attributes!.should == { :_id => '123456', :my_attr => 'value' }
+        end
+      end
     end
   end
 end
