@@ -5,6 +5,10 @@ describe Core::Model do
     Core::Model.ancestors.should include Core::Reader
   end
 
+  it 'should include Core::Writer' do
+    Core::Model.ancestors.should include Core::Writer
+  end
+
   it 'should include Virtus' do 
     Core::Model.ancestors.should include Virtus
   end

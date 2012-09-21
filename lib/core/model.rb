@@ -3,6 +3,7 @@ module Core
   class Model
     include Virtus
     include Reader
+    include Writer
 
     # @!attribute _id
     #   @return [Object] the id of the object as persisted
