@@ -27,7 +27,35 @@ describe Core::Writer do
         obj.to
       end
 
+      it "should retrive the same writer if it's called twice" do
+        writer = stub "writer"
+        aux = TestClass.new
+
+        Writer::TestClass.should_receive(:new).with(aux).and_return(writer)
+
+        aux.to.should eq writer
+        aux.to.should eq writer
+
+      end
     end
-  end
-  
+
+
+    context "there is no reader" do
+      it "should fail with a friendly error" do
+        class Fail
+          include Core::Writer
+        end
+
+        obj = Fail.new
+        expect { 
+          obj.to
+        }.to raise_error Core::Writer::MissingWriterError,
+          "The writer for Fail (Writer::Fail) wasn't found, please create it"
+         
+      end
+    end
+
+
+
+  end  
 end
