@@ -3,16 +3,17 @@ require 'spec_helper'
 
 describe Core::Writer do
   describe "#to" do
-    context "when the methos is call" do
-      before do
-        module Writer
-          class TestClass
-          end
-        end
+    before do
+      module Writer
         class TestClass
-          include Core::Writer
         end
       end
+      class TestClass
+        include Core::Writer
+      end
+    end
+
+    context "when the methos is call" do
       it "should try to instance the class reader with self(actual class that call the methos)" do
 
         Writer::TestClass.should_receive :new
@@ -39,8 +40,24 @@ describe Core::Writer do
       end
     end
 
+    context "for a subclass" do
+      it "should work at once, provided the implementation of the pattern is done" do
+        module Writer
+          class UserW
+          end
+        end
 
-    context "there is no reader" do
+        class UserW < TestClass
+        end
+
+        obj = UserW.new
+        Writer::UserW.should_receive( :new ).with obj
+        obj.to
+      end
+    end
+
+
+    context "there is no writer" do
       it "should fail with a friendly error" do
         class Fail
           include Core::Writer

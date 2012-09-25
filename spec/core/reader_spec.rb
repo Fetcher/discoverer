@@ -60,7 +60,7 @@ describe Core::Reader do
     context "para una subclase" do
       it "debería andar de una, provisto que existe el pattern correcto" do
         module Reader
-          class User
+          class UserR
           end
         end
 
@@ -68,10 +68,10 @@ describe Core::Reader do
           include Core::Reader
         end
 
-        class User < Model
+        class UserR < Model
         end
-        obj = User.new
-        Reader::User.should_receive( :new ).with obj
+        obj = UserR.new
+        Reader::UserR.should_receive( :new ).with obj
         obj.from
       end
     end
