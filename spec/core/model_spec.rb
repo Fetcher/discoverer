@@ -21,6 +21,18 @@ describe Core::Model do
     flag.should === true
   end
 
+  describe '.table_name' do
+    it 'should return the class name, downcased, pluralized and made into a Symbol' do 
+      Core::Model.table_name.should == :models
+    end
+  end
+
+  describe '.downcase' do
+    it 'should return the class name downcased and made into a String' do
+      Core::Model.downcase.should == 'model'
+    end
+  end
+
   describe '#attributes!' do 
     context 'we have another attribute' do
       before do

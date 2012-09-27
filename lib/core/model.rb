@@ -27,5 +27,16 @@ module Core
       end
       return the_attributes
     end
+
+    # Static methods
+    # @return [Symbol] the name of the class, pluralized, downcased and made into a Symbol
+    def self.table_name
+      "#{self.downcase}s".to_sym
+    end
+
+    # @return [String] the name of the clasee, downcased and made into a String
+    def self.downcase 
+      "#{self}".split("::").last.downcase
+    end
   end
 end
