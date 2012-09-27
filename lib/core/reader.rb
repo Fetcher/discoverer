@@ -1,12 +1,16 @@
 module Core
-  # Discoverer Module
+  
+  # Discoverer Method implementation for Readers
+  # Implements method #from
   module Reader
+
     # Discoverer method
+    # @return [Reader] the reader object for this object, initialized
     def from
       begin
-        @_patterns_reader ||= eval("::Reader::#{self.class}").new self
-        @_patterns_reader
-      rescue NameError => e 
+        @_reader ||= self.class.reader.new self
+        @_reader
+      rescue Core::Discoverer::Reader::NotFoundError => e 
         raise MissingReaderError, "The reader for #{self.class} (Reader::#{self.class}) wasn't found, please create it"
       end
     end
