@@ -8,5 +8,6 @@ require 'core/writer'
 require 'core/model'
 
 require 'core/discoverer/reader'
+require 'core/discoverer/writer'
 
 require 'core/class'
