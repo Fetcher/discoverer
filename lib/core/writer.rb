@@ -11,5 +11,6 @@ module Core
     end
 
     class MissingWriterError < StandardError; end
+    class EmptySourceError < StandardError; end
   end
 end
