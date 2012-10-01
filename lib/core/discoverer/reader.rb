@@ -5,17 +5,7 @@ module Core
       # @return [TrueClass, FalseClass] returns true if there is a corresponding 
       #   Reader for this class, false otherwise
       def has_reader?
-        namespace = self.name.split '::'
-        current_module = ::Reader
-        until namespace.empty?
-          if RUBY_VERSION =~ /1.8/
-            return false unless current_module.constants.include? namespace.first 
-          else
-            return false unless current_module.constants.include? namespace.first.to_sym
-          end
-          current_module = current_module.const_get namespace.shift
-        end
-        return true
+        Discoverer.has_adapter_for? ::Reader, self
       end
 
       # @return [Reader] returns the corresponding reader for this class, 
