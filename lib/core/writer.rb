@@ -3,8 +3,8 @@ module Core
 
     def to
       begin
-        @_patterns_writer ||= eval("::Writer::#{self.class}").new self
-        @_patterns_writer
+        @_writer ||= self.class.writer.new self
+        @_writer
       rescue
         raise MissingWriterError, "The writer for #{self.class} (Writer::#{self.class}) wasn't found, please create it"
       end

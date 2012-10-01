@@ -1,7 +1,7 @@
 module Core
   module Discoverer
+    # Writer Discoverer mixin that Core includes into Class    
     module Writer
-
       # @return [TrueClass, FalseClass] returns true if there is a corresponding 
       #   Writer for this class, false otherwise      
       def has_writer?
