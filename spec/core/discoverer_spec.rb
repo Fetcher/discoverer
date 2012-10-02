@@ -12,7 +12,7 @@ describe Core::Discoverer do
       end
     end
 
-    context 'no adapter exists for the given constante' do
+    context 'no adapter exists for the given constant' do
       it 'should return false' do
         module SomeAdaptation; end
         module Ja; class Kle; end; end
@@ -25,6 +25,16 @@ describe Core::Discoverer do
       it 'should raise a relevant error' do 
         expect { Core::Discoverer.has_adapter_for? DoesNotExist, Object
           }.to raise_error NameError
+      end
+    end
+
+    context 'the class has not name' do
+      it 'should return false' do
+        module SomeAdaptation; end
+
+        not_name = stub 'not name'
+        not_name.should_receive(:name).and_return nil
+        Core::Discoverer.has_adapter_for?(SomeAdaptation, not_name).should == false
       end
     end
   end

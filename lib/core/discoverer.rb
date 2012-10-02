@@ -1,7 +1,8 @@
 module Core
   module Discoverer
     def self.has_adapter_for? adapter_constant, the_class
-      namespace = the_class.name.split '::'
+      return false if the_class.name.nil?
+      namespace = the_class.name.split '::' 
       current_module = adapter_constant
       until namespace.empty?
         if RUBY_VERSION =~ /1.8/
