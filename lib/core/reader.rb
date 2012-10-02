@@ -8,9 +8,9 @@ module Core
     # @return [Reader] the reader object for this object, initialized
     def from
       begin
-        @_reader ||= self.class.reader.new self
+        @_reader ||= Discoverer.for( ::Reader, self.class ).new self
         @_reader
-      rescue Core::Discoverer::Reader::NotFoundError => e 
+      rescue Core::Discoverer::NotFoundError => e 
         raise MissingReaderError, "The reader for #{self.class} (Reader::#{self.class}) wasn't found, please create it"
       end
     end

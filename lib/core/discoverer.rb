@@ -13,5 +13,18 @@ module Core
       end
       return true
     end
+
+    def self.for adapter_constant, the_class
+      the_class.ancestors.length.times do |time|
+        if has_adapter_for? adapter_constant, the_class.ancestors[time]
+          return eval "::#{adapter_constant}::#{the_class.ancestors[time]}"
+        end
+      end
+
+      raise NotFoundError, 
+        "There is no #{adapter_constant.name.downcase} for #{the_class} or any of its ancestors"
+    end
+
+    class NotFoundError < StandardError; end
   end
 end
