@@ -13,8 +13,8 @@ describe Discoverer::Writer do
       end
     end
 
-    context "when the methos is call" do
-      it "should try to instance the class reader with self(actual class that call the methos)" do
+    context "when the method is called" do
+      it "should try to instance the class reader with self(actual class that call the method)" do
 
         Writer::TestClass.should_receive :new
 

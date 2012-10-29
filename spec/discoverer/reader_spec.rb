@@ -4,7 +4,7 @@ require 'spec_helper'
 describe Discoverer::Reader do
   describe "#from" do
     context "para la clase Klass" do
-      it "debería tratar de instanciar la clase Reader::Klass" do
+      it "should instance the class Reader::Klass" do
         module Reader
           class Klass
           end
@@ -20,7 +20,7 @@ describe Discoverer::Reader do
         obj.from
       end
 
-      it "debería pasarle como argumento el objeto actual" do
+      it "should pass the currect object as argument" do
         module Reader
           class Klass
           end
@@ -37,7 +37,7 @@ describe Discoverer::Reader do
         obj.from
       end
 
-      it "debería devolver el mismo reader si es llamado dos veces" do
+      it "should return the same reader if its called twice" do
         module Reader
           class Klass
           end
@@ -57,8 +57,8 @@ describe Discoverer::Reader do
       end
     end
 
-    context "para una subclase" do
-      it "debería andar de una, provisto que existe el pattern correcto" do
+    context "for a subclass" do
+      it "should simply work, provided the pattern is right" do
         module Reader
           class UserR
           end
@@ -76,8 +76,8 @@ describe Discoverer::Reader do
       end
     end
 
-    context "en realidad no hay reader" do
-      it 'debería fallar con un error que explique más o menos' do
+    context "there is a reader" do
+      it 'should fail with a descriptive error' do
         class Ponele
           include Discoverer::Reader
         end
