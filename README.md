@@ -1,7 +1,7 @@
-Core
+Discoverer
 ====
 
 Clases
 ------
 
-{Core::Model}
+{Discoverer::Model}
