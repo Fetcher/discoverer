@@ -49,7 +49,7 @@ describe Discoverer::Reader do
 
         obj = ::Klass.new
 
-        reader = stub 'reader'
+        reader = double 'reader'
         Reader::Klass.should_receive( :new ).with( obj ).and_return reader
 
         obj.from.should === reader

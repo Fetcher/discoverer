@@ -32,7 +32,7 @@ describe Discoverer do
       it 'should return false' do
         module SomeAdaptation; end
 
-        not_name = stub 'not name'
+        not_name = double 'not name'
         not_name.should_receive(:name).and_return nil
         Discoverer.has_adapter_for?(SomeAdaptation, not_name).should == false
       end

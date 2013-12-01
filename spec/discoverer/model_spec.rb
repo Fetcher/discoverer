@@ -49,7 +49,7 @@ describe Discoverer::Model do
       context 'only one attribute is set' do
         context 'my_attr was set' do
           it 'should return the attribute that was set' do 
-            Discoverer::Model.any_instance.should_receive(:from).and_return stub(:default => nil)
+            Discoverer::Model.any_instance.should_receive(:from).and_return double(:default => nil)
             model = Discoverer::Model.new :my_attr => "value"
             model.attributes!.should == { :my_attr => "value" }
           end
@@ -110,7 +110,7 @@ describe Discoverer::Model do
 
       context 'a Hash without _id key is passed' do
         it 'should return a new instance with the attributes set' do
-          reader = stub 'reader'
+          reader = double 'reader'
           Discoverer::Model.any_instance.should_receive(:from).and_return reader
           reader.should_receive :default
           mod = Discoverer::Model.new :my_attr => "345345"
@@ -118,7 +118,7 @@ describe Discoverer::Model do
         end
 
         it 'should call the reader #from and send the method #default' do
-          reader = stub 'reader'
+          reader = double 'reader'
           Discoverer::Model.any_instance.should_receive(:from).and_return reader
           reader.should_receive :default
           Discoverer::Model.new :my_attr => "234"

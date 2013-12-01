@@ -29,7 +29,7 @@ describe Discoverer::Writer do
       end
 
       it "should retrive the same writer if it's called twice" do
-        writer = stub "writer"
+        writer = double "writer"
         aux = TestClass.new
 
         Writer::TestClass.should_receive(:new).with(aux).and_return(writer)
