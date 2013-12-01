@@ -9,10 +9,6 @@ describe Discoverer::Model do
     Discoverer::Model.ancestors.should include Discoverer::Writer
   end
 
-  it 'should include Virtus' do 
-    Discoverer::Model.ancestors.should include Virtus
-  end
-
   it 'should include the attribute _id' do 
     flag = false
     Discoverer::Model.attribute_set.each do |attribute|

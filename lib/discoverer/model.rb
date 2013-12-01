@@ -1,7 +1,7 @@
 module Discoverer
   # {include:file:docs/Discoverer/Model.md}
   class Model
-    include Virtus
+    include Virtus.model
     include Reader
     include Writer
 

@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Discoverer functionality with focus in writers and readers}
   gem.homepage      = ""
 
-  gem.add_dependency 'virtus'
+  gem.add_dependency 'virtus', '~> 1.0'
 
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'pry'
